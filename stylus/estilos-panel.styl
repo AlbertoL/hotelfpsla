@@ -1,0 +1,256 @@
+azul-empresa = #004481
+bg_boton = #05374E
+btn_hover = #9CC4C8
+blanco = #ffffff
+color-header = #01395A
+@font-face {
+  font-family: 'museo';
+  	src: url("../font/MuseoSans300/mueseosans300.eot?");
+  	src: url("../font/MuseoSans300/mueseosans300.eot?#iefix") format('embedded-opentype'), 
+  		url("../font/MuseoSans300/museosans300.woff2") format('woff2'), 
+  		url("../font/MuseoSans300/museosans300.woff") format('woff'), 
+  		url("../font/MuseoSans300/museosans300.ttf") format('truetype'), 
+  		url("../font/MuseoSans300/museosans300.svg#MuseoSans300") format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+@font-face {
+  font-family: 'museoq';
+    src: url("../font/MuseoSans500/mueseosans500.eot?");
+    src: url("../font/MuseoSans500/mueseosans500.eot?#iefix") format('embedded-opentype'), 
+      url("../font/MuseoSans500/museosans500.woff2") format('woff2'), 
+      url("../font/MuseoSans500/museosans500.woff") format('woff'), 
+      url("../font/MuseoSans500/museosans500.ttf") format('truetype'), 
+      url("../font/MuseoSans500/museosans500.svg#MuseoSans300") format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+@font-face {
+  font-family: 'icon';
+  src: url("../font/iconfont/icomoon.eot?t6fcdt");
+  src: url("../font/iconfont/icomoon.eot?t6fcdt#iefix") format('embedded-opentype'), 
+      url("../font/iconfont/icomoon.ttf?t6fcdt") format('truetype'), 
+      url("../font/iconfont/icomoon.woff?t6fcdt") format('woff'), 
+      url("../font/iconfont/icomoon.svg?t6fcdt#icomoon") format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+body
+  background url('../img/siteBackground.gif')
+  .contenedor
+    min-width 330px
+@media screen and (min-width: 300px)
+  .contenedor
+    margin 0 auto
+    overflow hidden
+    position relative
+    width 100%
+    // background red
+    .content_panel
+      width 100%
+      // background blue
+      background blanco
+    	header
+        background color-header
+        border-bottom 5px btn_hover solid
+        display table
+        height auto
+        padding 10px
+        width 100%
+        .logo
+          display table-cell
+          width 20%
+          img 
+            width 100px
+        .menu
+          display table-cell
+          width 70%
+          position relative
+          // background gray
+          nav
+            right 10px
+            bottom 15px
+            position absolute
+            ul
+              display table
+              font-size 0
+              padding 0
+              > li 
+                  display table-cell
+                  list-style none
+                  font-family 'museo'
+                  font-size 16px
+                  a
+                    &:hover
+                      background btn_hover
+                      transition .5s
+                  ul
+                    display none
+                    position absolute
+              li 
+                &:hover
+                  > ul
+                    display block
+                    margin-left 0px
+                    z-index 20
+                    transition .5s
+                    li
+                      display block
+                      position relative
+                      background red
+                      z-index 30
+                      transition .5s
+                      a
+                        font-size 12px
+                        min-width 65px
+              a
+                display block
+                padding 10px
+                text-decoration none
+                background color-header
+                color blanco
+              .btn_menu
+                &:hover
+                  border-radius 5px 5px 0px 0px
+                  background btn_hover
+                  transition .5s
+      .cuerpo
+        width 100%
+        .content_cuerpo
+          width 100%
+          // background yellow
+          padding-top 50px
+          .content_form
+            -moz-box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
+            -webkit-box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
+            // background cyan
+            border 1px solid #c9c9c9
+            border-left 7px solid btn_hover
+            border-radius 5px
+            box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
+            margin 0px auto
+            min-height 400px
+            max-width 500px
+            padding 20px
+            width 80%
+            h2 
+              font-family 'museoq'
+              color azul-empresa
+              font-size 1.8em
+              span
+                color #8CB9BE
+            label
+              display block
+              font-family 'museo'
+              margin-top 15px
+              font-size 20px
+            input
+              border 1px solid #bbb
+              font-size 20px
+              padding 5px
+              width 93%
+            .error
+              font-size 12px
+              color red
+              margin 0
+            .mensaje
+              color red
+              font-size 12px
+              margin 5px 0px
+              padding 0
+              width 80px
+            .buscar
+              font-size 1em
+              width 100px
+            .button
+              background bg_boton
+              border-style solid
+              border-radius 3px
+              font-weight bold
+              padding 6px 0px
+              font-size 1em
+              width 80px
+              color blanco
+              transition .5s
+              &:hover
+                background btn_hover
+                color bg_boton
+            .tipo, .estado
+              border-radius 4px
+              height 30px
+              width 100%
+              width 50%
+            .content_boton
+              width 96%
+              position relative
+              height 40px
+              .submit
+                background bg_boton
+                border 0
+                border-radius 3px
+                color blanco
+                display block
+                margin-top 16px
+                position absolute
+                right 0px
+                width 100px
+                &:hover
+                  background btn_hover
+                  color bg_boton
+                  transition .5s
+            .load
+              color #05374E
+              text-decoration none
+              font-size 12px
+        .foot_pag
+          margin 60px auto 20px auto
+          width 100px
+          img 
+            width 100%
+      .cuerpo_panel
+        border-radius 5px
+        margin 16px auto
+        min-height 500px
+        padding 10px
+        width 90%
+        h2
+          font-family "museo"
+        table
+          width 100%
+          border 1px solid #ccc
+          -webkit-box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
+          -moz-box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
+          box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
+          td
+            padding 3px 0px
+            text-align center
+            font-family 'museo'
+            font-size 14px
+            .boton
+              background bg_boton
+              border 1px outset #f7f7f7
+              border-radius 3px
+              color blanco
+              font-size 16px
+              padding 3px 10px
+              &:hover
+                background btn_hover
+                color bg_boton
+                // font-weight bold
+          .title
+            border-bottom 1px solid #c9c9c9
+            td
+              font-family 'museoq'
+              font-weight bold
+              font-size 16px
+      .foot_pag
+        margin 60px auto 20px auto
+        width 100px
+        img
+          width 100%
+@media screen and (min-width: 850px)
+  .contenedor
+    width 70%
+    header
+      padding 0 30px
+      width 94%
