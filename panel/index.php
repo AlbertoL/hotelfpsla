@@ -1,7 +1,15 @@
 <?php
 include '../controlador/sesion.php';
+include '../archivo/conexion.php';
 if (!$tipo==1 and !$estado==1) {
 	include '../controlador/destruir.php';
+}
+$db=new conexion();
+$serverName = "EQUIPO\SQLEXPRESS";
+$connectionInfo = array( "Database"=>"hotelfpsla","CharacterSet"=>'UTF-8',"ReturnDatesAsStrings"=>true);
+$conn = sqlsrv_connect($serverName, $connectionInfo);
+if( $conn === false ) {
+     die( print_r( sqlsrv_errors(), true));
 }
 ?>
 <!DOCTYPE html>
@@ -34,40 +42,24 @@ if (!$tipo==1 and !$estado==1) {
 			<h2>Reportes</h2>
 				<table>
 					<tr class="title">
-						<td>Fecha</td>
-						<td>Nombre</td>
-						<td>Apellido</td>
-						<td>Título</td>
-						<td>Acción</td>
+						<td>NOMBRE</td>
+						<td>MES CONTABLE</td>
+						<td>FECHA SOLICITUD</td>
 					</tr>
-					<tr>
-						<td>11-01-2016</td>
-						<td>Juan</td>
-						<td>Arriagada</td>
-						<td>Informe Mensual</td>
-						<td><input type="button" value="Ver" class="boton" /></td>
-					</tr>
-					<tr>
-						<td>12-01-2016</td>
-						<td>Juan</td>
-						<td>Arriagada</td>
-						<td>Informe Mensual</td>
-						<td><input type="button" value="Ver" class="boton" /></td>
-					</tr>
-					<tr>
-						<td>13-01-2016</td>
-						<td>Juan</td>
-						<td>Arriagada</td>
-						<td>Informe Mensual</td>
-						<td><input type="button" value="Ver" class="boton" /></td>
-					</tr>
-					<tr>
-						<td>14-01-2016</td>
-						<td>Juan</td>
-						<td>Arriagada</td>
-						<td>Informe Mensual</td>
-						<td><input type="button" value="Ver" class="boton" /></td>
-					</tr>
+					<?php
+						$sql = "SELECT u.us_nombre+' '+u.us_apellido AS 'NOMBRE', r.f_mes_contable AS 'MES CONTABLE', r.fecha_consulta AS 'DIA SOLICITUD' FROM tb_usuario u INNER JOIN registro r ON r.fk_us_id = u.us_id";
+						$stmt = sqlsrv_query($conn,$sql);
+						while($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
+							$dateF=date_create($row[2]);
+							$format= date_format($dateF, 'd-m-Y H:i:s');
+							echo "<tr>";
+							echo "<td>".$row[0]."</td>";
+							echo "<td>".$db->dateMes($row[1])."</td>";
+							echo "<td>".$format."</td>";
+							echo "</tr>";
+						}
+					 ?>
+
 				</table>
 			</div>
 			<!-- FOOTER -->

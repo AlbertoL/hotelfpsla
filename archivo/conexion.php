@@ -1,27 +1,9 @@
 <?php
 
-
 error_reporting(E_ALL);
 class conexion{
  private $conexion;
  private $total_consultas;
-
-//  public function conectar(){
-//   if(!isset($this->conexion)){
-
-// $serverName = "EQUIPO\SQLEXPRESS"; //serverName\instanceName
-
-// // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-// // La conexión se intentará utilizando la autenticación Windows.
-// $connectionInfo = array( "Database"=>"hotelfpsla");
-// $conn = sqlsrv_connect($serverName, $connectionInfo);
-
-// if( $conn === false ) {
-//      die( print_r( sqlsrv_errors(), true));
-// }
-//     // mysqli_set_charset($this->conexion, "utf8");
-//   }
-// }
 
  public function consulta($consulta){
   $this->total_consultas++;
@@ -33,9 +15,10 @@ class conexion{
     }
     return $resultado;
   }
+
  public function fetch_array($consulta){
   return mysqli_fetch_array($consulta);
- 
+
   }
  public function num_rows($consulta){
   return mysqli_num_rows($consulta);
@@ -46,18 +29,18 @@ class conexion{
  public function getTotalConsultas(){
   return $this->total_consultas;
   }
-  function executeQuery($cons) 
+  function executeQuery($cons)
   {
     $this->consulta= mysql_query($cons,$this->conexion->conexion());
     return $this->consulta;
-  } 
+  }
 function limpiarInput($string)
   {
     $string=trim($string);
     $string=stripslashes($string);
     $string=strip_tags($string);
     return $string;
-  }  
+  }
 function cleanString($string)
 {
   $string=trim($string);
@@ -93,18 +76,14 @@ function verifica_RUT($rut='') {
   return 0;
 }
 
-// function fechaSql($fecha_nom){
-// $patron = explode("-", $fecha_nom);
-// $res=checkdate($patron[1], $patron[0], $patron[2]);
-// if($res){
-// $fechana=$patron[2]."-".$patron[1]."-".$patron[0];  
-// }else{
-// $fechana="0000-00-00";
-// }
-// }
 function fechaSql($fecha_nom){
 $patron = explode("-", $fecha_nom);
 $fechana=$patron[2]."-".$patron[1]."-".$patron[0];
+return $fechana;
+}
+function fechaReg($fecha_nom){
+$patron = explode("-", $fecha_nom);
+$fechana=$patron[1]."-".$patron[0]."-01";
 return $fechana;
 }
 function fecha($fecha_nom){
@@ -112,11 +91,9 @@ $patron = explode("-", $fecha_nom);
 $fechana=$patron[1].''.$patron[0];
 return $fechana;
 }
-function MesSql($fecha_nom){
+function dateMes($fecha_nom){
 $patron = explode("-", $fecha_nom);
-$res=checkdate($patron[1], $patron[0], $patron[2]);
-$fechana=$patron[1];  
-
+$fechana=$patron[1].'-'.$patron[0];
 return $fechana;
 }
 function fechaNormal($fecha_nom){
@@ -125,24 +102,24 @@ $fechana=$patron[2]."-".$patron[1]."-".$patron[0];
 return $fechana;
 }
 
-function quitar_tildes ($cadena) 
-{ 
-  $cadBuscar = array("á", "Á", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú"); 
-  $cadPoner = array("a", "A", "e", "E", "i", "I", "o", "O", "u", "U"); 
-  $cadena = str_replace($cadBuscar, $cadPoner, $cadena); 
+function quitar_tildes ($cadena)
+{
+  $cadBuscar = array("á", "Á", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú");
+  $cadPoner = array("a", "A", "e", "E", "i", "I", "o", "O", "u", "U");
+  $cadena = str_replace($cadBuscar, $cadPoner, $cadena);
   $cadena=  strtoupper($cadena);
-  return $cadena; 
-} 
+  return $cadena;
+}
 
-function colocar_tildes ($cadena) 
-{ 
-  $cadBuscar = array("a", "A", "e", "E", "i", "I", "o", "O", "u", "U"); 
-  $cadPoner   = array("á", "Á", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú"); 
-  
+function colocar_tildes ($cadena)
+{
+  $cadBuscar = array("a", "A", "e", "E", "i", "I", "o", "O", "u", "U");
+  $cadPoner   = array("á", "Á", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú");
 
-  $cadena = str_replace ($cadBuscar, $cadPoner, $cadena); 
+
+  $cadena = str_replace ($cadBuscar, $cadPoner, $cadena);
   $cadena=  strtoupper($cadena);
-  return $cadena; 
-} 
-  
+  return $cadena;
+}
+
 }

@@ -1,8 +1,7 @@
-<?php 
+<?php
 sleep(2);
 include '../archivo/conexion.php';
 $db=new conexion();
-// $db->conectar();
 
 $serverName = "EQUIPO\SQLEXPRESS"; //serverName\instanceName
 // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
@@ -96,33 +95,13 @@ if (isset($tipo)) {
 	}
 }
 
-// $password = crypt_blowfish_bydinvaders($pass);
-
-// function crypt_blowfish_bydinvaders($password, $digito = 7) {
-// 	$set_salt = './1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-// 	$salt = sprintf('$2a$%02d$', $digito);
-// 	for($i = 0; $i < 22; $i++)
-// 	{
-// 		$salt .= $set_salt[mt_rand(0, 22)];
-// 	}
-// 	return crypt($password, $salt);
-// }
-	
-	// Comprobación de contraseña BD y contraseña formulario
-	// if( crypt($nombre, $pass2) == $pass2) {
-	// 	$retorno = 'Es igual';
-	// }
-	// else{
-	// 	$retorno = 'No es igual';
-	// }
-
 if ($retorno == "") {
 
 	$sql = "SELECT us_rut FROM tb_usuario WHERE us_rut='$rut'";
 	$stmt = sqlsrv_query($conn,$sql);
 
 	if($stmt===false) {
-    	die(print_r( sqlsrv_errors(),true));	
+    	die(print_r( sqlsrv_errors(),true));
     }
 	else{
 

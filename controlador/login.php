@@ -1,4 +1,4 @@
-<?php 
+<?php
 sleep(3);
 include '../archivo/conexion.php';
 $db=new conexion();
@@ -37,7 +37,7 @@ if ($retorno == "") {
 	$sql = "SELECT us_rut,us_password FROM tb_usuario WHERE us_rut='$rut' and us_password='$pass'";
 	$stmt = sqlsrv_query($conn,$sql);
 	if($stmt===false) {
-    	die(print_r( sqlsrv_errors(),true));	
+    	die(print_r( sqlsrv_errors(),true));
     }
 	else{
 
@@ -45,31 +45,32 @@ if ($retorno == "") {
 				echo "Rut o contraseña inválidos";
 			}
 			else{
-				$sql = "SELECT us_tipo, us_estado FROM tb_usuario WHERE us_rut='$rut' AND us_estado='1'";
+				$sql = "SELECT us_tipo, us_estado, us_id FROM tb_usuario WHERE us_rut='$rut' AND us_estado='1'";
 				$stmt = sqlsrv_query($conn,$sql);
 				while($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)) {
 					switch ($row[0]) {
                 		case '1':
                 			if ($row[1]==1) {
                 				$_SESSION['admin']=base64_encode($row[0]);
-		                    	$_SESSION['estado']=base64_encode($row[1]);
-		                    	$retorno=1;
+		                    $_SESSION['estado']=base64_encode($row[1]);
+                        $_SESSION['id']=base64_encode($row[2]);
+		                    $retorno=1;
                 			}
                 			else{
                 				$retorno=3;
                 			}
-		                    
+
                     	break;
                 		case '2':
                 			if ($row[1]==1) {
                 				$_SESSION['basico']=base64_encode($row[0]);
                 				$_SESSION['estado']=base64_encode($row[1]);
-                    			$retorno=2;
+                        $_SESSION['id']=base64_encode($row[2]);
+                    		$retorno=2;
                 			}
                 			else{
                 				$retorno = 3;
                 			}
-                			
                     	break;
                 		default:
                     		$retorno=9;
