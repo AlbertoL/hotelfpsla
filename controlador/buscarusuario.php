@@ -1,18 +1,9 @@
-<?php 
+<?php
 sleep(3);
+require_once ('./sesion.php');
+require_once('../archivo/bd.php');
 include '../archivo/conexion.php';
 $db=new conexion();
-// $db->conectar();
-
-$serverName = "EQUIPO\SQLEXPRESS"; //serverName\instanceName
-// Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-// La conexión se intentará utilizando la autenticación Windows.
-// ini_set('mssql.charset', 'UTF-8');
-$connectionInfo = array( "Database"=>"hotelfpsla","CharacterSet"=>'UTF-8');
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-if( $conn === false ) {
-     die( print_r( sqlsrv_errors(), true));
-}
 
 $rut=$db->cleanString($_POST['rut2']);
 $retorno="";
@@ -38,7 +29,7 @@ if ($retorno == "") {
 	$sql = "SELECT us_rut FROM tb_usuario WHERE us_rut='$rut'";
 	$stmt = sqlsrv_query($conn,$sql);
 	if($stmt===false) {
-    	die(print_r( sqlsrv_errors(),true));	
+    	die(print_r( sqlsrv_errors(),true));
     }
 	else{
 
@@ -46,7 +37,7 @@ if ($retorno == "") {
 				echo "0";
 			}
 			else{
-				$sql = "SELECT * FROM tb_usuario";
+				$sql = "SELECT * FROM tb_usuario WHERE us_rut='$rut'";
 				$stmt = sqlsrv_query($conn,$sql);
 				while($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)) {
 					$retorno = "<input type=\"hidden\" value='".$row[0]."' id=\"idusu\" class=\"idusu\" name=\"idusu\" />

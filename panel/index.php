@@ -1,16 +1,11 @@
 <?php
-include '../controlador/sesion.php';
+require_once('../archivo/bd.php');
+require_once ('../controlador/sesion.php');
 include '../archivo/conexion.php';
 if (!$tipo==1 and !$estado==1) {
 	include '../controlador/destruir.php';
 }
 $db=new conexion();
-$serverName = "EQUIPO\SQLEXPRESS";
-$connectionInfo = array( "Database"=>"hotelfpsla","CharacterSet"=>'UTF-8',"ReturnDatesAsStrings"=>true);
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-if( $conn === false ) {
-     die( print_r( sqlsrv_errors(), true));
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">

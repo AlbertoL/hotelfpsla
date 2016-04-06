@@ -1,18 +1,9 @@
-<?php 
+<?php
 sleep(2);
+require_once ('./sesion.php');
+require_once('../archivo/bd.php');
 include '../archivo/conexion.php';
 $db=new conexion();
-
-
-$serverName = "EQUIPO\SQLEXPRESS"; //serverName\instanceName
-// Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-// La conexión se intentará utilizando la autenticación Windows.
-// ini_set('mssql.charset', 'UTF-8');
-$connectionInfo = array( "Database"=>"hotelfpsla","CharacterSet"=>'UTF-8');
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-if( $conn === false ) {
-     die( print_r( sqlsrv_errors(), true));
-}
 
 $retorno="";
 
@@ -20,7 +11,7 @@ if ($retorno == "") {
 	$sql = "SELECT * FROM tb_tipo";
 	$stmt = sqlsrv_query($conn,$sql);
 	if($stmt===false) {
-    	die(print_r( sqlsrv_errors(),true));	
+    	die(print_r( sqlsrv_errors(),true));
     }
 	else{
 

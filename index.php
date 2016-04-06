@@ -17,11 +17,11 @@
 				</div>
 				<div class="login">
 				<form id="frmUsuario" name="frmUsuario" action="#" method="POST">
-					
+
 					<input type="text" placeholder="Rut" id="rut" name="rut" autocomplete="off"/>
 					<div id="msgUsuario" class="mensaje"></div><div id="datos" name="datos"></div>
 					<input type="password" id="pass" placeholder="Contraseña" name="pass" autocomplete="off"/>
-					
+
 					<div class="cont_submit">
 					<input id="boton" type="submit" class="btn_enviar" value="Entrar"/>
 					</div>
@@ -42,48 +42,6 @@
 	<script src="js/jquery.validate.min.js"></script>
 	<script src="js/jquery.Rut.min.js"></script>
 	<script src="js/pass.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#rut").Rut({
-			on_error: function(){ $('#boton').attr("disabled", true); $("#msgUsuario").html("Rut Incorrecto")},
-    		on_success:  function(){$('#boton').attr("disabled", false);$("#msgUsuario").html("")
-
-    		$('#frmUsuario').submit(function() {
-    			$.ajax({
-    				data:$(this).serialize(),
-    				url:"./controlador/login.php",
-    				type:"POST",
-    				beforeSend:function(){
-					$('#load').html('<img src="./panel/load.gif"/ width=60>');
-					$("#rsp").html("");
-					},
-					success:function(respuesta){
-						console.log(respuesta);
-						switch(respuesta){
-							case '1':
-			 				$(location).attr('href','./panel/index.php');
-							break;
-							case '2':
-							$(location).attr('href','./panel/mes-contable.php');
-							break;
-							case '3':
-								$('#rsp').html("Usuario Inactivo");
-							break;
-							case '0':
-								alert("ingresa un usuario.");
-							break;
-							default:
-								$('#rsp').html(respuesta);
-							}
-							$('#load').html('');
-					}	
-    			});
-    				return false;
-    		});
-    	},
-			format_on: 'keyup'
-		});
-	});
-	</script>
+	<script src="js/login.js"></script>
 </body>
 </html>

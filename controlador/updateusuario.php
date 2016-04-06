@@ -1,18 +1,8 @@
-<?php 
+<?php
 sleep(2);
+require_once('../archivo/bd.php');
 include '../archivo/conexion.php';
 $db=new conexion();
-// $db->conectar();
-
-$serverName = "EQUIPO\SQLEXPRESS"; //serverName\instanceName
-// Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-// La conexión se intentará utilizando la autenticación Windows.
-// ini_set('mssql.charset', 'UTF-8');
-$connectionInfo = array( "Database"=>"hotelfpsla","CharacterSet"=>'UTF-8');
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-if( $conn === false ) {
-     die( print_r( sqlsrv_errors(), true));
-}
 
 $retorno="";
 $id=$db->cleanString($_POST['idusu']);
@@ -137,10 +127,10 @@ if ($retorno == "") {
 		if (sqlsrv_fetch_array($stmt) == false) {
 			echo "El Rut $rut ya se encuentra registrado";
 
-			
+
 		}
 		else{
-			
+
 			$password = base64_encode($pass);
 			$sql = "UPDATE tb_usuario SET us_rut=(?),us_nombre=(?),us_apellido=(?),us_password=(?),us_tipo=(?),us_estado=(?) WHERE us_id=(?)";
 			$params = array($rut,$nombre,$apellido,$password,$tipo,$estado,$id);
@@ -152,7 +142,7 @@ if ($retorno == "") {
 				echo "Usuario modificado correctamente";
 			}
 
-			
+
 		}
 	}
 }

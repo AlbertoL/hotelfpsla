@@ -1,5 +1,5 @@
 <?php
-include '../controlador/sesion.php';
+require_once ('../controlador/sesion.php');
 if (!$estado == 1) {
 	include '../controlador/destruir.php';
 }

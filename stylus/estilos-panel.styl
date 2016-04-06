@@ -6,10 +6,10 @@ color-header = #01395A
 @font-face {
   font-family: 'museo';
   	src: url("../font/MuseoSans300/mueseosans300.eot?");
-  	src: url("../font/MuseoSans300/mueseosans300.eot?#iefix") format('embedded-opentype'), 
-  		url("../font/MuseoSans300/museosans300.woff2") format('woff2'), 
-  		url("../font/MuseoSans300/museosans300.woff") format('woff'), 
-  		url("../font/MuseoSans300/museosans300.ttf") format('truetype'), 
+  	src: url("../font/MuseoSans300/mueseosans300.eot?#iefix") format('embedded-opentype'),
+  		url("../font/MuseoSans300/museosans300.woff2") format('woff2'),
+  		url("../font/MuseoSans300/museosans300.woff") format('woff'),
+  		url("../font/MuseoSans300/museosans300.ttf") format('truetype'),
   		url("../font/MuseoSans300/museosans300.svg#MuseoSans300") format('svg');
       font-weight: normal;
       font-style: normal;
@@ -17,10 +17,10 @@ color-header = #01395A
 @font-face {
   font-family: 'museoq';
     src: url("../font/MuseoSans500/mueseosans500.eot?");
-    src: url("../font/MuseoSans500/mueseosans500.eot?#iefix") format('embedded-opentype'), 
-      url("../font/MuseoSans500/museosans500.woff2") format('woff2'), 
-      url("../font/MuseoSans500/museosans500.woff") format('woff'), 
-      url("../font/MuseoSans500/museosans500.ttf") format('truetype'), 
+    src: url("../font/MuseoSans500/mueseosans500.eot?#iefix") format('embedded-opentype'),
+      url("../font/MuseoSans500/museosans500.woff2") format('woff2'),
+      url("../font/MuseoSans500/museosans500.woff") format('woff'),
+      url("../font/MuseoSans500/museosans500.ttf") format('truetype'),
       url("../font/MuseoSans500/museosans500.svg#MuseoSans300") format('svg');
       font-weight: normal;
       font-style: normal;
@@ -28,9 +28,9 @@ color-header = #01395A
 @font-face {
   font-family: 'icon';
   src: url("../font/iconfont/icomoon.eot?t6fcdt");
-  src: url("../font/iconfont/icomoon.eot?t6fcdt#iefix") format('embedded-opentype'), 
-      url("../font/iconfont/icomoon.ttf?t6fcdt") format('truetype'), 
-      url("../font/iconfont/icomoon.woff?t6fcdt") format('woff'), 
+  src: url("../font/iconfont/icomoon.eot?t6fcdt#iefix") format('embedded-opentype'),
+      url("../font/iconfont/icomoon.ttf?t6fcdt") format('truetype'),
+      url("../font/iconfont/icomoon.woff?t6fcdt") format('woff'),
       url("../font/iconfont/icomoon.svg?t6fcdt#icomoon") format('svg');
       font-weight: normal;
       font-style: normal;
@@ -45,10 +45,8 @@ body
     overflow hidden
     position relative
     width 100%
-    // background red
     .content_panel
       width 100%
-      // background blue
       background blanco
     	header
         background color-header
@@ -60,13 +58,12 @@ body
         .logo
           display table-cell
           width 20%
-          img 
+          img
             width 100px
         .menu
           display table-cell
           width 70%
           position relative
-          // background gray
           nav
             right 10px
             bottom 15px
@@ -75,7 +72,7 @@ body
               display table
               font-size 0
               padding 0
-              > li 
+              > li
                   display table-cell
                   list-style none
                   font-family 'museo'
@@ -87,7 +84,7 @@ body
                   ul
                     display none
                     position absolute
-              li 
+              li
                 &:hover
                   > ul
                     display block
@@ -118,12 +115,10 @@ body
         width 100%
         .content_cuerpo
           width 100%
-          // background yellow
           padding-top 50px
           .content_form
             -moz-box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
             -webkit-box-shadow: 7px 5px 27px 3px rgba(221,221,221,1);
-            // background cyan
             border 1px solid #c9c9c9
             border-left 7px solid btn_hover
             border-radius 5px
@@ -133,7 +128,7 @@ body
             max-width 500px
             padding 20px
             width 80%
-            h2 
+            h2
               font-family 'museoq'
               color azul-empresa
               font-size 1.8em
@@ -202,10 +197,13 @@ body
               color #05374E
               text-decoration none
               font-size 12px
+            #rsp
+               color red
+               font-size 12px
         .foot_pag
           margin 60px auto 20px auto
           width 100px
-          img 
+          img
             width 100%
       .cuerpo_panel
         border-radius 5px

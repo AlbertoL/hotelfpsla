@@ -1,24 +1,15 @@
 <?php
 sleep(2);
+require_once ('./sesion.php');
+require_once('../archivo/bd.php');
 include '../archivo/conexion.php';
 $db=new conexion();
-
-$serverName = "EQUIPO\SQLEXPRESS"; //serverName\instanceName
-// Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-// La conexión se intentará utilizando la autenticación Windows.
-// ini_set('mssql.charset', 'UTF-8');
-$connectionInfo = array( "Database"=>"hotelfpsla","CharacterSet"=>'UTF-8');
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-if( $conn === false ) {
-     die( print_r( sqlsrv_errors(), true));
-}
 
 $rut=$db->cleanString($_POST['rut']);
 $nombre=$db->cleanString($_POST['nombre']);
 $apellido=$db->cleanString($_POST['apellido']);
 $pass=$db->cleanString($_POST['pass']);
 $tipo=$db->cleanString($_POST['tipo']);
-// $pass=base64_encode($db->cleanString($_POST['pass']));
 $retorno="";
 
 if (isset($_POST['rut'])){
@@ -86,7 +77,7 @@ else{
 }
 if (isset($tipo)) {
 	if (!is_numeric($tipo)) {
-		$retorno .= "Error al modificar el usuario";
+		$retorno .= "Error al ingresar tipo usuario";
 	}
 	else{
 		if(!$tipo > 0 and $tipo < 3){

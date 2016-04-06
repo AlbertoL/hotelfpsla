@@ -1,5 +1,5 @@
 <?php
-include '../controlador/sesion.php';
+require_once ('../controlador/sesion.php');
 if (!$tipo==1 and $estado==1) {
 	include '../controlador/destruir.php';
 }
@@ -36,13 +36,7 @@ if (!$tipo==1 and $estado==1) {
 						<input type="text" id="apellido" class="apellido" name="apellido"/>
 						<label for="pass">Contraseña</label>
 						<input type="password" id="pass" class="pass" name="pass"/>
-						<!-- <label for="Tipo">Tipo</label>
-						<select name="tipo" id="tipo">
-							<option value="1">ADMINISTRADOR</option>
-							<option value="2">BÁSICO</option>
-						</select> -->
 						<div id="tipo">
-							
 						</div>
 						<div class="content_boton">
 							<input type="submit" id="submit" class="submit" value="Registrar" />
@@ -60,58 +54,11 @@ if (!$tipo==1 and $estado==1) {
 			</div>
 		</div>
 	</div>
-
 	<script src="../js/jquery.js"></script>
 	<script src="../js/modernizr.js"></script>
 	<script src="../js/jquery.validate.min.js"></script>
 	<script src="../js/jquery.Rut.min.js"></script>
 	<script src="../js/validar.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#rut").Rut({
-			on_error: function(){ $('#submit').attr("disabled", true); $("#msgUsuario").html("Rut Incorrecto")},
-    		on_success:  function(){
-    			
-    			$('#submit').attr("disabled", false);$("#msgUsuario").html("")
-
-    			$('#frmRegistro').submit(function() {
-    				$.ajax({
-    				data:$(this).serialize(),
-    				url:"../controlador/registro.php",
-    				type:"POST",
-    				beforeSend:function(){
-					$('#load').html('<img src="./load.gif"/ width=60> verificando');
-					},
-					success:function(respuesta){
-						console.log(respuesta);
-						$('#rsp').html(respuesta);
-						$('#load').html('');
-						}	
-    					});
-    				return false;
-    			});
-
-    		},
-			format_on: 'keyup'
-		});
-
-    				$.ajax({
-    				// data:$(this).serialize(),
-    				url:"../controlador/listartipo.php",
-    				type:"POST",
-    				beforeSend:function(){
-					// $('#load').html('<img src="./load.gif"/ width=60> verificando');
-					},
-					success:function(respuesta){
-						console.log(respuesta);
-						$('#tipo').html(respuesta);
-						// $('#load').html('');
-						}	
-    					});
-    				return false;
-  
-
-	});
-	</script>
+	<script src="../js/crear.js"></script>
 </body>
 </html>
