@@ -42,7 +42,7 @@ if (isset($nombre)) {
 	}
 }
 else{
-	$retorno .="ingrese un nombre";
+	$retorno .="Ingrese un nombre";
 }
 
 if (isset($apellido)) {

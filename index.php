@@ -32,8 +32,6 @@
 				<div class="olvido_pass">
 					<a href="#">¿Olvidó su contraseña?</a>
 				</div>
-				<!-- prueba firma -->
-				<!-- fin prueba firma -->
 			</div>
 		</div>
 	</div>

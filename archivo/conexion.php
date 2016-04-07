@@ -5,35 +5,6 @@ class conexion{
  private $conexion;
  private $total_consultas;
 
- public function consulta($consulta){
-  $this->total_consultas++;
-  $resultado = mysqli_query($this->conexion,$consulta);
-    if(!$resultado){
-      echo 'MySQL Error: ' . mysqli_error($resultado);
-      // throw new Exception('Could not connect to database server');
-      exit;
-    }
-    return $resultado;
-  }
-
- public function fetch_array($consulta){
-  return mysqli_fetch_array($consulta);
-
-  }
- public function num_rows($consulta){
-  return mysqli_num_rows($consulta);
-  }
-  public function affected_rows($consulta){
-  return mysqli_affected_rows($this->conexion);
-  }
- public function getTotalConsultas(){
-  return $this->total_consultas;
-  }
-  function executeQuery($cons)
-  {
-    $this->consulta= mysql_query($cons,$this->conexion->conexion());
-    return $this->consulta;
-  }
 function limpiarInput($string)
   {
     $string=trim($string);

@@ -2,7 +2,6 @@ $(document).ready(function() {
   $("#rut").Rut({
     on_error: function(){ $('#boton').attr("disabled", true); $("#msgUsuario").html("Rut Incorrecto")},
       on_success:  function(){$('#boton').attr("disabled", false);$("#msgUsuario").html("")
-
       $('#frmUsuario').submit(function() {
         $.ajax({
           data:$(this).serialize(),
